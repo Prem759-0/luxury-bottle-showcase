@@ -3,97 +3,98 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Noir Éclat • Luxury Perfume</title>
+  <title>NOIR ÉCLAT • Luxury Perfume</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <style>
-    body { font-family: 'Inter', system-ui, sans-serif; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+    }
     .hero-bg {
-      background: linear-gradient(135deg, #0a0a0a, #1a0f1f);
+      background: radial-gradient(circle at center, #1a0f1f 0%, #0a0a0a 70%);
+    }
+    .glass {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.1);
     }
     .bottle {
-      transition: transform 0.1s ease;
-      filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.6));
+      filter: drop-shadow(0 30px 40px rgba(139, 92, 246, 0.4));
+      transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .bottle:hover {
+      transform: scale(1.05) rotate(3deg);
     }
   </style>
 </head>
 <body class="bg-black text-white overflow-x-hidden">
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section class="hero-bg min-h-screen flex items-center relative">
-    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
       <div class="space-y-8">
-        <h1 class="text-7xl md:text-8xl font-light tracking-tighter leading-none">
-          NOIR<br>ÉCLAT
+        <div class="inline-block px-6 py-2 glass rounded-full text-sm tracking-[3px]">EST. 2026 • PARIS</div>
+        <h1 class="text-7xl md:text-[5.5rem] font-light tracking-tighter leading-none">
+          NOIR<br><span class="text-violet-400">ÉCLAT</span>
         </h1>
-        <p class="text-xl text-gray-400 max-w-md">
-          A fragrance that captures the essence of midnight elegance.
+        <p class="text-xl text-gray-300 max-w-md">
+          An olfactory masterpiece. Midnight black orchid meets warm oud and golden vanilla.
         </p>
-        <button onclick="document.getElementById('pinned-section').scrollIntoView({ behavior: 'smooth' })"
-          class="px-10 py-4 border border-white/50 hover:bg-white hover:text-black transition-all duration-300 text-sm tracking-widest">
-          DISCOVER THE SCENT
+        <button onclick="document.getElementById('showcase').scrollIntoView({ behavior: 'smooth' })" 
+          class="px-10 py-5 border border-white/60 hover:border-white hover:bg-white/10 transition-all text-sm tracking-widest">
+          EXPLORE THE JOURNEY
         </button>
       </div>
 
-      <!-- Product Bottle -->
-      <div class="flex justify-center">
-        <img id="bottle" 
-             src="https://picsum.photos/id/1015/600/800" 
-             alt="Luxury Perfume Bottle" 
-             class="bottle w-80 md:w-[420px] h-auto">
+      <div class="flex justify-center relative">
+        <img id="hero-bottle" 
+             src="https://picsum.photos/id/1015/520/720" 
+             alt="Noir Éclat Perfume" 
+             class="bottle w-80 md:w-96">
       </div>
     </div>
 
-    <!-- Scroll Indicator -->
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-xs tracking-widest">
-      <div class="w-px h-12 bg-gradient-to-b from-transparent via-white/50 to-transparent"></div>
-      SCROLL TO EXPLORE
+    <div class="absolute bottom-12 left-1/2 flex flex-col items-center text-xs tracking-widest opacity-70">
+      <span>SCROLL TO DISCOVER</span>
+      <div class="w-px h-16 bg-gradient-to-b from-transparent via-white to-transparent mt-3"></div>
     </div>
   </section>
 
-  <!-- Pinned Scroll Animation Section -->
-  <section id="pinned-section" class="relative h-[300vh]">
+  <!-- Advanced Pinned Showcase -->
+  <section id="showcase" class="relative h-[400vh]">
     <div class="sticky top-0 h-screen flex items-center overflow-hidden">
       <div class="max-w-7xl mx-auto px-6 w-full">
-        <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div class="grid md:grid-cols-12 gap-16 items-center h-full">
           
-          <!-- Left: Product Image + Animation -->
-          <div class="flex justify-center">
-            <img id="pinned-bottle" 
-                 src="https://picsum.photos/id/1015/600/800" 
-                 alt="Perfume Bottle" 
-                 class="bottle w-96 md:w-[480px]">
+          <!-- Bottle Container -->
+          <div class="md:col-span-6 flex justify-center">
+            <img id="main-bottle" 
+                 src="https://picsum.photos/id/1015/520/720" 
+                 alt="Luxury Perfume Bottle"
+                 class="bottle w-[280px] md:w-[420px]">
           </div>
 
-          <!-- Right: Content that changes on scroll -->
-          <div class="space-y-12">
-            <div id="content-1" class="scroll-content">
-              <h2 class="text-5xl font-light mb-4">Midnight Bloom</h2>
-              <p class="text-gray-400 text-lg">Notes of black orchid, oud, and golden amber awaken the senses.</p>
+          <!-- Dynamic Content -->
+          <div class="md:col-span-6 space-y-16">
+            <div id="panel-1" class="scroll-panel">
+              <h2 class="text-5xl md:text-6xl font-light leading-none mb-6">The Scent of Midnight</h2>
+              <p class="text-lg text-gray-400">Black orchid, rare oud, and a touch of vanilla create an addictive aura of mystery.</p>
             </div>
-            
-            <div id="content-2" class="scroll-content hidden">
-              <h2 class="text-5xl font-light mb-4">Crafted in Paris</h2>
-              <p class="text-gray-400 text-lg">Hand-blended with the finest ingredients from Grasse.</p>
+
+            <div id="panel-2" class="scroll-panel hidden">
+              <h2 class="text-5xl md:text-6xl font-light leading-none mb-6">Masterfully Crafted</h2>
+              <p class="text-lg text-gray-400">Hand-blended in Grasse, France using the world's finest ingredients.</p>
             </div>
-            
-            <div id="content-3" class="scroll-content hidden">
-              <h2 class="text-5xl font-light mb-4">Eternal Elegance</h2>
-              <p class="text-gray-400 text-lg">A scent that lingers like a beautiful memory.</p>
+
+            <div id="panel-3" class="scroll-panel hidden">
+              <h2 class="text-5xl md:text-6xl font-light leading-none mb-6">Lasts All Night</h2>
+              <p class="text-lg text-gray-400">Exceptional longevity. One spray lingers elegantly for over 12 hours.</p>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- Final CTA -->
-  <section class="py-32 hero-bg text-center">
-    <h2 class="text-6xl font-light mb-8">Experience Noir Éclat</h2>
-    <button class="px-12 py-6 bg-white text-black text-lg tracking-widest hover:scale-105 transition-transform">
-      SHOP NOW — ₹12,999
-    </button>
   </section>
 
   <script src="script.js"></script>
