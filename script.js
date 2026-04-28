@@ -1,69 +1,73 @@
 gsap.registerPlugin(ScrollTrigger);
 
-// Initial bottle float animation
-gsap.from("#bottle", {
-  y: 80,
-  opacity: 0,
-  duration: 1.8,
-  ease: "power3.out"
+// Hero bottle subtle float
+gsap.to("#hero-bottle", {
+  y: -30,
+  duration: 3,
+  repeat: -1,
+  yoyo: true,
+  ease: "sine.inOut"
 });
 
-// Main ScrollTrigger Animation
+// Main Scroll Timeline
 const tl = gsap.timeline({
   scrollTrigger: {
-    trigger: "#pinned-section",
+    trigger: "#showcase",
     start: "top top",
     end: "bottom bottom",
-    scrub: 1,
+    scrub: 1.2,
     pin: true,
-    anticipatePin: 1
   }
 });
 
-// Animate the pinned bottle
-tl.to("#pinned-bottle", {
-  scale: 0.85,
-  rotate: -12,
-  y: -60,
-  duration: 2
+tl.to("#main-bottle", {
+  scale: 0.82,
+  rotate: -18,
+  y: -80,
+  duration: 3
 })
-.to("#pinned-bottle", {
-  scale: 1.05,
-  rotate: 8,
-  y: 40,
+.to("#main-bottle", {
+  scale: 1.08,
+  rotate: 15,
+  y: 60,
+  duration: 3
+}, "+=0.5")
+.to("#main-bottle", {
+  scale: 1,
+  rotate: 0,
+  y: 0,
   duration: 2
-}, "+=0.5");
-
-// Content reveals
-gsap.to("#content-1", {
-  scrollTrigger: {
-    trigger: "#pinned-section",
-    start: "top 30%",
-    end: "30% 30%",
-    scrub: true,
-    toggleActions: "play none none reverse"
-  },
-  opacity: 0
 });
 
-gsap.from("#content-2", {
+// Panel animations
+gsap.timeline({
   scrollTrigger: {
-    trigger: "#pinned-section",
-    start: "25% 40%",
-    end: "50% 40%",
+    trigger: "#showcase",
+    start: "20% top",
+    end: "40% top",
+    scrub: true
+  }
+})
+.to("#panel-1", { opacity: 0, y: -40 })
+
+gsap.from("#panel-2", {
+  scrollTrigger: {
+    trigger: "#showcase",
+    start: "35% top",
+    end: "55% top",
     scrub: true
   },
   opacity: 0,
-  y: 50
+  y: 80
 });
 
-gsap.from("#content-3", {
+gsap.from("#panel-3", {
   scrollTrigger: {
-    trigger: "#pinned-section",
-    start: "55% 40%",
-    end: "80% 40%",
+    trigger: "#showcase",
+    start: "60% top",
+    end: "80% top",
     scrub: true
   },
   opacity: 0,
-  y: 50
+  y: 80
 });
