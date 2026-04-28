@@ -1,62 +1,59 @@
 gsap.registerPlugin(ScrollTrigger);
 
-// Hero bottle gentle float
+// Hero bottle float
 gsap.to("#hero-bottle", {
-  y: -25,
-  duration: 4,
+  y: -30,
+  duration: 5,
   repeat: -1,
   yoyo: true,
   ease: "sine.inOut"
 });
 
-// Magnetic 3D Tilt Effect
-const bottle = document.getElementById("main-bottle");
+// Magnetic 3D Tilt
+const mainBottle = document.getElementById("main-bottle");
 
-bottle.addEventListener("mousemove", (e) => {
-  const rect = bottle.getBoundingClientRect();
+mainBottle.addEventListener("mousemove", (e) => {
+  const rect = mainBottle.getBoundingClientRect();
   const x = e.clientX - rect.left - rect.width / 2;
   const y = e.clientY - rect.top - rect.height / 2;
   
-  const rotateX = -y / 12;
-  const rotateY = x / 12;
+  const rotateX = -y / 14;
+  const rotateY = x / 14;
 
-  bottle.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+  mainBottle.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.04)`;
 });
 
-bottle.addEventListener("mouseleave", () => {
-  bottle.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
+mainBottle.addEventListener("mouseleave", () => {
+  mainBottle.style.transform = `perspective(1200px) rotateX(0deg) rotateY(0deg) scale(1)`;
 });
 
-// Scroll Trigger Timeline
+// Scroll Timeline
 const tl = gsap.timeline({
   scrollTrigger: {
     trigger: "#showcase",
     start: "top top",
     end: "bottom bottom",
-    scrub: 1.5,
+    scrub: 1.6,
     pin: true,
   }
 });
 
-tl.to("#main-bottle", { scale: 0.78, rotate: -22, y: -100, duration: 4 })
-  .to("#main-bottle", { scale: 1.12, rotate: 18, y: 80, duration: 4 }, "+=0.3")
+tl.to("#main-bottle", { scale: 0.75, rotate: -25, y: -120, duration: 4 })
+  .to("#main-bottle", { scale: 1.15, rotate: 20, y: 90, duration: 4 }, "+=0.4")
   .to("#main-bottle", { scale: 1, rotate: 0, y: 0, duration: 3 });
 
-// Content Panels
+// Panel animations
 gsap.to("#panel-1", {
-  scrollTrigger: { trigger: "#showcase", start: "20% top", end: "45% top", scrub: true },
-  opacity: 0,
-  y: -60
+  scrollTrigger: { trigger: "#showcase", start: "15% top", end: "45% top", scrub: true },
+  opacity: 0, y: -80
 });
 
 gsap.from("#panel-2", {
-  scrollTrigger: { trigger: "#showcase", start: "40% top", end: "65% top", scrub: true },
-  opacity: 0,
-  y: 100
+  scrollTrigger: { trigger: "#showcase", start: "38% top", end: "65% top", scrub: true },
+  opacity: 0, y: 120
 });
 
 gsap.from("#panel-3", {
-  scrollTrigger: { trigger: "#showcase", start: "65% top", end: "90% top", scrub: true },
-  opacity: 0,
-  y: 100
+  scrollTrigger: { trigger: "#showcase", start: "65% top", end: "92% top", scrub: true },
+  opacity: 0, y: 120
 });
