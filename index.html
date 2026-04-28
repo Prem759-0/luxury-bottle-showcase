@@ -11,126 +11,99 @@
     body { font-family: 'Inter', system-ui, sans-serif; }
     
     .hero-bg {
-      background: radial-gradient(circle at 50% 20%, #3b1e5c 0%, #0a0a0a 60%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-bg::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle, rgba(167,139,250,0.12) 0%, transparent 70%);
-      animation: glow 15s ease infinite alternate;
-      pointer-events: none;
-    }
-
-    @keyframes glow {
-      0% { opacity: 0.6; transform: scale(0.95); }
-      100% { opacity: 1; transform: scale(1.05); }
+      background: radial-gradient(circle at 40% 30%, #2a1b40 0%, #0a0a0a 70%);
     }
 
     .bottle {
-      filter: drop-shadow(0 50px 70px rgba(139, 92, 246, 0.55));
-      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      filter: drop-shadow(0 60px 90px rgba(139, 92, 246, 0.6));
     }
 
     .glass {
-      background: rgba(255, 255, 255, 0.06);
-      backdrop-filter: blur(24px);
-      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(28px);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .horizontal-scroll {
+      display: flex;
+      gap: 4rem;
     }
   </style>
 </head>
 <body class="bg-black text-white overflow-x-hidden">
 
-  <!-- Navigation -->
-  <nav class="fixed top-0 left-0 right-0 z-50 glass">
-    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-      <h3 class="text-xl font-light tracking-widest">NOIR ÉCLAT</h3>
-      <div class="flex gap-8 text-sm tracking-widest">
-        <a href="#" class="hover:text-violet-300 transition-colors">The Scent</a>
-        <a href="#" class="hover:text-violet-300 transition-colors">Craft</a>
-        <a href="#" class="hover:text-violet-300 transition-colors">Shop</a>
+  <!-- Nav -->
+  <nav class="fixed top-0 z-50 glass w-full">
+    <div class="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
+      <h3 class="text-2xl font-light tracking-widest">NOIR ÉCLAT</h3>
+      <div class="flex gap-10 text-sm uppercase tracking-widest">
+        <a href="#" class="hover:text-violet-400 transition">The Scent</a>
+        <a href="#" class="hover:text-violet-400 transition">The Bottle</a>
+        <a href="#" class="hover:text-violet-400 transition">Shop</a>
       </div>
     </div>
   </nav>
 
   <!-- Hero -->
-  <section class="hero-bg min-h-screen flex items-center relative pt-20">
-    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-      <div class="space-y-8">
-        <div class="inline-flex items-center gap-2 px-6 py-2.5 glass rounded-full text-xs tracking-[3px]">
-          <div class="w-2 h-2 bg-violet-400 rounded-full animate-pulse"></div>
-          LIMITED FIRST EDITION
+  <section class="hero-bg min-h-screen flex items-center pt-20">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div class="space-y-10">
+        <div class="glass inline-flex px-6 py-3 rounded-3xl text-xs tracking-[4px] items-center gap-3">
+          <span class="text-violet-400">●</span> LIMITED EDITION 2026
         </div>
-        <h1 class="text-7xl md:text-[6rem] font-light tracking-[-3px] leading-none">
-          NOIR<br><span class="text-violet-300">ÉCLAT</span>
+        <h1 class="text-7xl md:text-8xl font-light tracking-tighter leading-none">
+          NOIR<br><span class="bg-gradient-to-r from-violet-300 to-fuchsia-300 bg-clip-text text-transparent">ÉCLAT</span>
         </h1>
-        <p class="text-2xl text-gray-300 max-w-md">
-          Darkness that glows. A fragrance that lingers like midnight memories.
+        <p class="max-w-md text-xl text-gray-300">
+          A luminous darkness. Where mystery meets unforgettable elegance.
         </p>
-        <button onclick="document.getElementById('showcase').scrollIntoView({ behavior: 'smooth' })" 
-          class="px-12 py-6 border border-white/70 hover:bg-white hover:text-black transition-all text-sm tracking-widest">
-          DISCOVER THE ESSENCE
+        <button onclick="document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' })}"
+          class="px-14 py-7 border border-white/60 hover:bg-white hover:text-black text-sm tracking-widest transition-all">
+          EXPLORE THE JOURNEY
         </button>
       </div>
 
       <div class="flex justify-center">
-        <img id="hero-bottle" 
-             src="https://picsum.photos/id/1015/520/720" 
-             alt="Noir Éclat Perfume" 
-             class="bottle w-80 md:w-[400px]">
+        <img id="hero-bottle" src="https://picsum.photos/id/1015/520/720" 
+             class="bottle w-80 md:w-[420px]" alt="Noir Éclat">
       </div>
     </div>
   </section>
 
-  <!-- Pinned Showcase -->
-  <section id="showcase" class="relative h-[420vh]">
-    <div class="sticky top-0 h-screen flex items-center overflow-hidden">
+  <!-- Advanced Horizontal Gallery Section -->
+  <section id="gallery" class="relative h-[300vh]">
+    <div class="sticky top-0 h-screen overflow-hidden flex items-center">
       <div class="max-w-7xl mx-auto px-6 w-full">
-        <div class="grid md:grid-cols-12 gap-20 items-center h-full">
-          <div class="md:col-span-6 flex justify-center">
-            <img id="main-bottle" 
-                 src="https://picsum.photos/id/1015/520/720" 
-                 alt="Luxury Perfume Bottle"
-                 class="bottle w-[300px] md:w-[460px]">
+        <div class="flex flex-col md:flex-row gap-16 items-center">
+          
+          <!-- Bottle Gallery -->
+          <div class="md:w-1/2 flex justify-center">
+            <div id="bottle-container" class="relative">
+              <img id="gallery-bottle" src="https://picsum.photos/id/1015/520/720" 
+                   class="bottle w-[340px] md:w-[480px]" alt="Perfume Bottle">
+            </div>
           </div>
 
-          <div class="md:col-span-6 space-y-24">
-            <div id="panel-1" class="scroll-panel">
-              <h2 class="text-5xl md:text-6xl font-light leading-tight">The Soul of Midnight</h2>
-              <p class="mt-6 text-gray-400 text-lg">Black orchid, smoky oud, and golden vanilla create an addictive depth.</p>
-            </div>
-
-            <div id="panel-2" class="scroll-panel hidden">
-              <h2 class="text-5xl md:text-6xl font-light leading-tight">Artisan Crafted</h2>
-              <p class="mt-6 text-gray-400 text-lg">Blended with passion in Grasse, France using the rarest ingredients.</p>
-            </div>
-
-            <div id="panel-3" class="scroll-panel hidden">
-              <h2 class="text-5xl md:text-6xl font-light leading-tight">Eternal Presence</h2>
-              <p class="mt-6 text-gray-400 text-lg">Powerful sillage that commands attention from dusk until dawn.</p>
+          <!-- Horizontal Scroll Content -->
+          <div class="md:w-1/2">
+            <div id="horizontal" class="horizontal-scroll overflow-x-auto pb-10 snap-x snap-mandatory scrollbar-hide">
+              <div class="flex gap-20 min-w-max">
+                <div class="w-[380px] snap-center">
+                  <h2 class="text-5xl font-light">Midnight Orchid</h2>
+                  <p class="mt-8 text-gray-400">The heart note that captivates instantly.</p>
+                </div>
+                <div class="w-[380px] snap-center">
+                  <h2 class="text-5xl font-light">Smoky Oud</h2>
+                  <p class="mt-8 text-gray-400">Deep, mysterious base that lingers for hours.</p>
+                </div>
+                <div class="w-[380px] snap-center">
+                  <h2 class="text-5xl font-light">Golden Glow</h2>
+                  <p class="mt-8 text-gray-400">Warm vanilla and musk finish with radiant elegance.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="hero-bg py-32">
-    <div class="max-w-3xl mx-auto text-center px-6">
-      <h2 class="text-6xl font-light mb-4">Claim Your Essence</h2>
-      <p class="text-xl text-gray-400 mb-10">100ml • Eau de Parfum • Limited Batch</p>
-      
-      <div class="glass inline-block px-14 py-10 rounded-3xl">
-        <div class="text-6xl font-light mb-1">₹12,999</div>
-        <p class="text-sm tracking-widest text-gray-400 mb-8">incl. taxes • Free shipping</p>
-        <button onclick="alert('Added to cart ✨ (This is a demo)')" 
-          class="w-full bg-white text-black py-6 rounded-2xl text-lg font-medium hover:scale-105 transition-transform">
-          ADD TO CART
-        </button>
       </div>
     </div>
   </section>
