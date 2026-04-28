@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noir Éclat • Luxury Perfume</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .hero-bg {
+      background: linear-gradient(135deg, #0a0a0a, #1a0f1f);
+    }
+    .bottle {
+      transition: transform 0.1s ease;
+      filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.6));
+    }
+  </style>
+</head>
+<body class="bg-black text-white overflow-x-hidden">
+
+  <!-- Hero Section -->
+  <section class="hero-bg min-h-screen flex items-center relative">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div class="space-y-8">
+        <h1 class="text-7xl md:text-8xl font-light tracking-tighter leading-none">
+          NOIR<br>ÉCLAT
+        </h1>
+        <p class="text-xl text-gray-400 max-w-md">
+          A fragrance that captures the essence of midnight elegance.
+        </p>
+        <button onclick="document.getElementById('pinned-section').scrollIntoView({ behavior: 'smooth' })"
+          class="px-10 py-4 border border-white/50 hover:bg-white hover:text-black transition-all duration-300 text-sm tracking-widest">
+          DISCOVER THE SCENT
+        </button>
+      </div>
+
+      <!-- Product Bottle -->
+      <div class="flex justify-center">
+        <img id="bottle" 
+             src="https://picsum.photos/id/1015/600/800" 
+             alt="Luxury Perfume Bottle" 
+             class="bottle w-80 md:w-[420px] h-auto">
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-xs tracking-widest">
+      <div class="w-px h-12 bg-gradient-to-b from-transparent via-white/50 to-transparent"></div>
+      SCROLL TO EXPLORE
+    </div>
+  </section>
+
+  <!-- Pinned Scroll Animation Section -->
+  <section id="pinned-section" class="relative h-[300vh]">
+    <div class="sticky top-0 h-screen flex items-center overflow-hidden">
+      <div class="max-w-7xl mx-auto px-6 w-full">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+          
+          <!-- Left: Product Image + Animation -->
+          <div class="flex justify-center">
+            <img id="pinned-bottle" 
+                 src="https://picsum.photos/id/1015/600/800" 
+                 alt="Perfume Bottle" 
+                 class="bottle w-96 md:w-[480px]">
+          </div>
+
+          <!-- Right: Content that changes on scroll -->
+          <div class="space-y-12">
+            <div id="content-1" class="scroll-content">
+              <h2 class="text-5xl font-light mb-4">Midnight Bloom</h2>
+              <p class="text-gray-400 text-lg">Notes of black orchid, oud, and golden amber awaken the senses.</p>
+            </div>
+            
+            <div id="content-2" class="scroll-content hidden">
+              <h2 class="text-5xl font-light mb-4">Crafted in Paris</h2>
+              <p class="text-gray-400 text-lg">Hand-blended with the finest ingredients from Grasse.</p>
+            </div>
+            
+            <div id="content-3" class="scroll-content hidden">
+              <h2 class="text-5xl font-light mb-4">Eternal Elegance</h2>
+              <p class="text-gray-400 text-lg">A scent that lingers like a beautiful memory.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-32 hero-bg text-center">
+    <h2 class="text-6xl font-light mb-8">Experience Noir Éclat</h2>
+    <button class="px-12 py-6 bg-white text-black text-lg tracking-widest hover:scale-105 transition-transform">
+      SHOP NOW — ₹12,999
+    </button>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
